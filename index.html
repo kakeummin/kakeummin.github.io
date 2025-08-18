@@ -4,107 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keummin Ka | Personal Website</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .scroll-mt-24 {
+            scroll-margin-top: 6rem;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800">
 
-    <header>
-        <h1>Keummin Ka</h1>
-        <p>Research focused on NLP, Multi-modal, Vision-Language models, and Personalized LLMs.</p>
-        <p>Email: kummin0429@yonsei.ac.kr | Phone: +82) 010-6250-2726</p>
-    </header>
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50 p-4">
+        <div class="container mx-auto flex justify-between items-center flex-wrap">
+            <a href="#about" class="text-xl font-bold text-blue-600 hover:text-blue-800 transition duration-300">Keummin Ka</a>
+            <div class="space-x-4 md:space-x-6 flex flex-wrap justify-center md:justify-end">
+                <a href="#about" class="text-gray-600 hover:text-blue-600 transition duration-300">About</a>
+                <a href="#education" class="text-gray-600 hover:text-blue-600 transition duration-300">Education</a>
+                <a href="#publications" class="text-gray-600 hover:text-blue-600 transition duration-300">Publications</a>
+                <a href="#experience" class="text-gray-600 hover:text-blue-600 transition duration-300">Experience</a>
+                <a href="#skills" class="text-gray-600 hover:text-blue-600 transition duration-300">Skills</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-    <main>
-        <section id="education">
-            <h2>Education</h2>
-            <ul>
-                <li><strong>Yonsei University</strong>, Seoul, South Korea</li>
-                <li>M.S./Ph.D. Student, Department of Artificial Intelligence (Sep 2024 - Present)</li>
-                <li><strong>Yonsei University</strong>, Seoul, South Korea</li>
-                <li>B.S., Department of Electrical and Electronic Engineering (Mar 2020 - Aug 2024)</li>
-            </ul>
+    <main class="container mx-auto p-8 pt-24">
+
+        <!-- About Me Section -->
+        <section id="about" class="bg-white p-8 md:p-12 rounded-lg shadow-md mb-8 scroll-mt-24">
+            <div class="flex flex-col md:flex-row items-center md:space-x-8">
+                <div class="flex-shrink-0 mb-6 md:mb-0">
+                    <!-- Replace the placeholder URL with your actual image URL -->
+                    <img src="https://placehold.co/200x200/cccccc/333333/png?text=Your+Photo" 
+                         alt="Keummin Ka's profile photo" 
+                         class="rounded-full w-40 h-40 md:w-48 md:h-48 object-cover border-4 border-blue-200">
+                </div>
+                <div class="text-center md:text-left">
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">안녕하세요!</h1>
+                    <p class="mt-4 text-gray-700 leading-relaxed text-lg">
+                        저는 연세대학교 인공지능학과 석박사 통합 과정에 재학 중인 **Keummin Ka**입니다.
+                        주로 **자연어 처리(NLP)**, **멀티모달(Multi-modal)**, **비전-언어 모델(Vision-Language model)**,
+                        그리고 **개인화된 대규모 언어 모델(Personalized LLM)**에 대한 연구를 하고 있습니다.
+                        제 연구와 프로젝트, 경력에 대해 더 자세히 살펴보세요.
+                    </p>
+                    <p class="mt-2 text-sm text-gray-500">
+                        Email: kummin0429@yonsei.ac.kr | Phone: +82) 010-6250-2726
+                    </p>
+                </div>
+            </div>
         </section>
 
-        <section id="publications">
-            <h2>Publications</h2>
-            <ul>
-                <li>
-                    <h3>Ever-Evolving Memory by Blending and Refining the Past</h3>
-                    <p>Authors: Seohyun Kim, Keummin Ka, Yohan Jo, Seung-won Hwang, Dongha Lee, Jinyoung Yeo</p>
-                    <p><a href="https://arxiv.org/abs/2403.04787" target="_blank">arXiv:2403.04787</a></p>
-                </li>
-                <li>
-                    <h3>Connecting the Dots from Data: LLM-driven Tree-search Career Cartographies as Your AI Career Explorer</h3>
-                    <p>Authors: Seungbeen Lee, Keummin Ka, Jinhong Jeong, Chaewon Kim, Seungju Han, Youngjae Yu</p>
-                    <p>Preprint.</p>
-                </li>
-                <li>
-                    <h3>Not All Who Wander Are Lost: Building Fantasy-World Commonsense with GANDALF</h3>
-                    <p>Authors: Keummin Ka*, Min Soo Kim*, Jungyang Park, Chanwoo Choi, Buru Chang, Youngjae Yu</p>
-                    <p>Preprint. Under Review by AAAI 2026</p>
-                </li>
-                <li>
-                    <h3>VAGUE: Visual Contexts Clarify Ambiguous Expressions</h3>
-                    <p>Authors: Heejeong Nam*, Jinwoo Ahn*, Keummin Ka, Jiwan Chung, Youngjae Yu</p>
-                    <p><a href="https://arxiv.org/abs/2411.14137" target="_blank">arXiv:2411.14137</a> Accepted to ICCV 2025</p>
-                </li>
-                <li>
-                    <h3>InfoCausalQA: A Benchmark for Causal Reasoning on Infographics</h3>
-                    <p>Authors: Keummin Ka*, Junhyeong Park*, Jaehyun Jeon, Youngjae Yu</p>
-                    <p><a href="https://arxiv.org/abs/2508.06220" target="_blank">arXiv:2508.06220</a> Under Review by AAAI 2026</p>
-                </li>
-            </ul>
+        <!-- Education Section -->
+        <section id="education" class="bg-white p-8 rounded-lg shadow-md mb-8 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">Education</h2>
+            <div class="space-y-4">
+                <div>
+                    <h3 class="font-semibold text-lg">Yonsei University, Seoul, South Korea</h3>
+                    <p class="text-gray-600">M.S./Ph.D. Student, Department of Artificial Intelligence (Sep 2024 - Present)</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg">Yonsei University, Seoul, South Korea</h3>
+                    <p class="text-gray-600">B.S, Department of Electrical and Electronic Engineering (Mar 2020 - Aug 2024)</p>
+                </div>
+            </div>
         </section>
 
-        <section id="experience">
-            <h2>Work Experience & Internships</h2>
-            <h3>Work Experience</h3>
-            <ul>
-                <li><strong>2024 Samsung AI Expert course TA</strong> (2024.06.24-2024.06.28)
-                    <ul>
-                        <li>Conducted supplementary lessons on NLP and practiced code.</li>
-                    </ul>
-                </li>
-                <li><strong>2024 SK ML Engineer course TA</strong> (2024.07.08-2024.07.12, 2024.07.29-2024.08.02)
-                    <ul>
-                        <li>Conducted supplementary lessons on NLP and practiced code.</li>
-                    </ul>
-                </li>
-            </ul>
-            <h3>Internships</h3>
-            <ul>
-                <li><strong>Corelab Internship</strong> (Jan '22 – Jul '22)
-                    <ul>
-                        <li>Compiler Research Lab., Prof. Han-Jun Kim, YONSEI, Korea</li>
-                        <li>Studied C programming.</li>
-                    </ul>
-                </li>
-                <li><strong>CSE – URP</strong> (Jul '23 - Aug '23)
-                    <ul>
-                        <li>Machine Intelligence and Data Science (MIDaS) Lab., Prof. Won-Yong Shin, Yonsei University, Korea</li>
-                        <li>Studied the basics of Generative Models.</li>
-                    </ul>
-                </li>
-                <li><strong>DLIntelligence Lab</strong> (Sep '23 – Aug ‘24)
-                    <ul>
-                        <li>Data & Language Intelligence Lab., Prof. Jin-Yeong Yeo, YONSEI, Korea</li>
-                        <li>Studied Natural Language Processing.</li>
-                    </ul>
-                </li>
-            </ul>
+        <!-- Publications Section -->
+        <section id="publications" class="bg-white p-8 rounded-lg shadow-md mb-8 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">Publications</h2>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold">Ever-Evolving Memory by Blending and Refining the Past</h3>
+                    <p class="text-gray-600">Authors: Seohyun Kim, Keummin Ka, Yohan Jo, Seung-won Hwang, Dongha Lee, Jinyoung Yeo</p>
+                    <p><a href="https://arxiv.org/abs/2403.04787" target="_blank" class="text-blue-500 hover:underline">arXiv:2403.04787</a></p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold">Connecting the Dots from Data: LLM-driven Tree-search Career Cartographies as Your AI Career Explorer</h3>
+                    <p class="text-gray-600">Authors: Seungbeen Lee, Keummin Ka, Jinhong Jeong, Chaewon Kim, Seungju Han, Youngjae Yu</p>
+                    <p class="text-gray-600">Preprint.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold">Not All Who Wander Are Lost: Building Fantasy-World Commonsense with GANDALF</h3>
+                    <p class="text-gray-600">Authors: Keummin Ka*, Min Soo Kim*, Jungyang Park, Chanwoo Choi, Buru Chang, Youngjae Yu</p>
+                    <p class="text-gray-600">Preprint. Under Review by AAAI 2026</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold">VAGUE: Visual Contexts Clarify Ambiguous Expressions</h3>
+                    <p class="text-gray-600">Authors: Heejeong Nam*, Jinwoo Ahn*, Keummin Ka, Jiwan Chung, Youngjae Yu</p>
+                    <p><a href="https://arxiv.org/abs/2411.14137" target="_blank" class="text-blue-500 hover:underline">arXiv:2411.14137</a> Accepted to ICCV 2025</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold">InfoCausalQA: A Benchmark for Causal Reasoning on Infographics</h3>
+                    <p class="text-gray-600">Authors: Keummin Ka*, Junhyeong Park*, Jaehyun Jeon, Youngjae Yu</p>
+                    <p><a href="https://arxiv.org/abs/2508.06220" target="_blank" class="text-blue-500 hover:underline">arXiv:2508.06220</a> Under Review by AAAI 2026</p>
+                </div>
+            </div>
         </section>
 
-        <section id="skills">
-            <h2>Skills</h2>
-            <ul>
+        <!-- Experience Section -->
+        <section id="experience" class="bg-white p-8 rounded-lg shadow-md mb-8 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">Work Experience & Internships</h2>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold">Work Experience</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li><strong>2024 Samsung AI Expert course TA</strong> (2024.06.24-2024.06.28)
+                            <ul class="list-circle list-inside ml-4 text-gray-500">
+                                <li>Conducted supplementary lessons on NLP and practiced code.</li>
+                            </ul>
+                        </li>
+                        <li><strong>2024 SK ML Engineer course TA</strong> (2024.07.08-2024.07.12, 2024.07.29-2024.08.02)
+                            <ul class="list-circle list-inside ml-4 text-gray-500">
+                                <li>Conducted supplementary lessons on NLP and practiced code.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold">Internships</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li><strong>Corelab Internship</strong> (Jan '22 – Jul '22)
+                            <ul class="list-circle list-inside ml-4 text-gray-500">
+                                <li>Compiler Research Lab., Prof. Han-Jun Kim, YONSEI, Korea</li>
+                                <li>Studied C programming.</li>
+                            </ul>
+                        </li>
+                        <li><strong>CSE – URP</strong> (Jul '23 - Aug '23)
+                            <ul class="list-circle list-inside ml-4 text-gray-500">
+                                <li>Machine Intelligence and Data Science (MIDaS) Lab., Prof. Won-Yong Shin, Yonsei University, Korea</li>
+                                <li>Studied the basics of Generative Models.</li>
+                            </ul>
+                        </li>
+                        <li><strong>DLIntelligence Lab</strong> (Sep '23 – Aug ‘24)
+                            <ul class="list-circle list-inside ml-4 text-gray-500">
+                                <li>Data & Language Intelligence Lab., Prof. Jin-Yeong Yeo, YONSEI, Korea</li>
+                                <li>Studied Natural Language Processing.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="bg-white p-8 rounded-lg shadow-md mb-8 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">Skills</h2>
+            <ul class="space-y-2 text-gray-600">
                 <li><strong>Languages:</strong> English (Intermediate), Korean (Native)</li>
                 <li><strong>Tech. Stack:</strong> Python, C</li>
             </ul>
         </section>
 
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white p-8 rounded-lg shadow-md mb-8 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">Contact</h2>
+            <p class="text-gray-600">Email: kummin0429@yonsei.ac.kr</p>
+            <p class="text-gray-600">Phone: +82) 010-6250-2726</p>
+        </section>
+
     </main>
 
-    <footer>
+    <footer class="bg-gray-800 text-white text-center p-4">
         <p>&copy; 2024 Keummin Ka. All Rights Reserved.</p>
     </footer>
 

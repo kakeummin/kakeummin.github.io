@@ -1,209 +1,738 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keummin Ka | Personal Website</title>
+    <title>Keummin Ka | Portfolio & Research</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
         }
-        .scroll-mt-24 {
-            scroll-margin-top: 6rem;
+    </script>
+    <!-- Font & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Pretendard', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 50%, #f1f5f9 100%);
+        }
+        .break-keep {
+            word-break: keep-all;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="text-slate-800 min-h-screen flex flex-col justify-between antialiased selection:bg-blue-100 selection:text-blue-900">
 
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-md fixed w-full top-0 z-50 p-4">
-        <div class="container mx-auto flex justify-between items-center flex-wrap">
-            <a href="#about" class="text-xl font-bold text-blue-600 hover:text-blue-800 transition duration-300">Keummin Ka</a>
-            <div class="space-x-4 md:space-x-6 flex flex-wrap justify-center md:justify-end">
-                <a href="#about" class="text-gray-600 hover:text-blue-600 transition duration-300">About</a>
-                <a href="#education" class="text-gray-600 hover:text-blue-600 transition duration-300">Education</a>
-                <a href="#publications" class="text-gray-600 hover:text-blue-600 transition duration-300">Publications</a>
-                <a href="#experience" class="text-gray-600 hover:text-blue-600 transition duration-300">Experience</a>
-                <a href="#skills" class="text-gray-600 hover:text-blue-600 transition duration-300">Skills</a>
-                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition duration-300">Contact</a>
-            </div>
+    <!-- Header for Mobile Screens -->
+    <header class="lg:hidden sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 px-5 py-3.5 flex items-center justify-between shadow-sm">
+        <div class="flex items-center space-x-3">
+            <img src="profile.png" onerror="this.src='https://ui-avatars.com/api/?name=Keummin+Ka&background=2563eb&color=fff'" alt="Keummin Ka" class="w-9 h-9 rounded-full object-cover ring-2 ring-blue-500/30">
+            <span class="font-bold text-slate-900 tracking-tight">Keummin Ka</span>
         </div>
-    </nav>
+        <span class="text-xs font-semibold px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200">AI Researcher</span>
+    </header>
 
-    <main class="container mx-auto p-8 pt-24">
+    <!-- Main Container: Spacious 2-Column Desktop Grid -->
+    <main class="w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 lg:py-10 flex-grow">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- LEFT COLUMN: Profile Card & Interactive Sidebar Navigation -->
+            <aside class="lg:col-span-4 lg:sticky lg:top-8 space-y-6">
+                <!-- Profile Card -->
+                <div class="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/80 shadow-sm transition hover:shadow-md">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="relative mb-4 group">
+                            <img src="profile.png" 
+                                 onerror="this.src='https://ui-avatars.com/api/?name=Keummin+Ka&background=2563eb&color=fff&size=256'" 
+                                 alt="Keummin Ka" 
+                                 class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl object-cover ring-4 ring-blue-50 shadow-md group-hover:scale-[1.02] transition duration-300">
+                            <span class="absolute -bottom-1.5 -right-1.5 w-5 h-5 bg-emerald-500 border-2 border-white rounded-full" title="Active"></span>
+                        </div>
+                        <h1 class="text-2xl font-bold text-slate-900 tracking-tight">가금민 (Keummin Ka)</h1>
+                        <p class="text-sm font-medium text-blue-600 mt-1">AI Researcher & Engineer</p>
+                        <p class="text-xs text-slate-500 mt-1 flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-graduation-cap"></i> M.S. in AI, Yonsei University
+                        </p>
+                    </div>
 
-        <!-- About Me Section -->
-        <section id="about" class="bg-white p-8 md:p-12 rounded-lg shadow-md mb-8 scroll-mt-24">
-            <div class="flex flex-col md:flex-row items-center md:space-x-8">
-                <div class="flex-shrink-0 mb-6 md:mb-0">
-                    <!--
-                        To add your image, replace the "your-photo.jpg" with the name of your
-                        image file that you uploaded to the GitHub repository.
-                        Example: <img src="my_profile_photo.png" ...>
-                    -->
-                    <img src="profile.JPG" 
-                         alt="Keummin Ka's profile photo" 
-                         class="rounded-full w-40 h-40 md:w-48 md:h-48 object-cover border-4 border-blue-200">
-                </div>
-                <div class="text-center md:text-left">
-                    <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">Hello!</h1>
-                    <p class="mt-4 text-gray-700 leading-relaxed text-lg">
-                        I am Keummin Ka, a Master’s student in Artificial Intelligence at Yonsei University.
-                        My research primarily focuses on Natural Language Processing (NLP), Multimodal Learning, Vision-Language Models, and Personalized Large Language Models (LLMs).
-                        Feel free to explore my research, projects, and professional experience in more detail.
-                    </p>
-                    <p class="mt-2 text-sm text-gray-500">
-                        Email: <a href="mailto:kummin0429@yonsei.ac.kr" class="text-blue-500 hover:underline">kummin0429@yonsei.ac.kr</a> | Phone: +82) 010-6250-2726
-                    </p>
-                    <!-- Link to the CV file as text -->
-                    <p class="mt-1 text-sm text-gray-500">
-                        <a href="KeumminKa_CV.docx" target="_blank" class="text-blue-500 hover:underline">My CV</a>
-                    </p>
-                </div>
-            </div>
-        </section>
+                    <!-- Quick Contact Chips -->
+                    <div class="mt-6 pt-5 border-t border-slate-100 space-y-2.5 text-xs sm:text-sm text-slate-600">
+                        <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-slate-100 transition">
+                            <span class="flex items-center gap-2 truncate">
+                                <i class="fa-regular fa-envelope text-blue-500 w-4"></i>
+                                <span class="truncate">kummin0429@yonsei.ac.kr</span>
+                            </span>
+                            <button onclick="copyEmail()" class="text-slate-400 hover:text-blue-600 ml-2" title="이메일 복사">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center p-2 rounded-lg bg-slate-50 text-slate-600">
+                            <i class="fa-solid fa-phone text-blue-500 w-4 mr-2"></i>
+                            <span>+82) 010-6250-2726</span>
+                        </div>
+                    </div>
 
-        <!-- Education Section -->
-        <section id="education" class="bg-white p-8 rounded-lg shadow-md mb-8 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-blue-600 mb-4">Education</h2>
-            <div class="space-y-4">
-                <div>
-                    <h3 class="font-semibold text-lg">Yonsei University, Seoul, South Korea</h3>
-                    <p class="text-gray-600">M.S. Student, Department of Artificial Intelligence (Sep 2024 - Present)</p>
+                    <!-- CV Button -->
+                    <div class="mt-5">
+                        <a href="KeumminKa_CV.docx" target="_blank" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-900 hover:bg-blue-600 text-white text-sm font-medium rounded-xl shadow-sm hover:shadow transition duration-200">
+                            <i class="fa-solid fa-file-arrow-down"></i>
+                            <span>Download CV (.docx)</span>
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-lg">Yonsei University, Seoul, South Korea</h3>
-                    <p class="text-gray-600">B.S, Department of Electrical and Electronic Engineering (Mar 2020 - Aug 2024)</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- Publications Section -->
-        <section id="publications" class="bg-white p-8 rounded-lg shadow-md mb-8 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-blue-600 mb-4">Publications</h2>
-            <div class="space-y-6">
-                <div>
-                    <h3 class="text-xl font-semibold">Ever-Evolving Memory by Blending and Refining the Past</h3>
-                    <p class="text-gray-600">Authors: Seohyun Kim, <strong>Keummin Ka</strong>, Yohan Jo, Seung-won Hwang, Dongha Lee, Jinyoung Yeo</p>
-                    <p><a href="https://arxiv.org/abs/2403.04787" target="_blank" class="text-blue-500 hover:underline">arXiv:2403.04787</a></p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold">Connecting the Dots from Data: LLM-driven Tree-search Career Cartographies as Your AI Career Explorer</h3>
-                    <p class="text-gray-600">Authors: Seungbeen Lee, <strong>Keummin Ka</strong>, Jinhong Jeong, Chaewon Kim, Seungju Han, Youngjae Yu</p>
-                    <p class="text-gray-600">Preprint.</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold">Not All Who Wander Are Lost: Building Fantasy-World Commonsense with GANDALF</h3>
-                    <p class="text-gray-600">Authors: <strong>Keummin Ka*</strong>, Min Soo Kim*, Jungyang Park, Chanwoo Choi, Buru Chang, Youngjae Yu</p>
-                    <p class="text-gray-600">Preprint.</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold">VAGUE: Visual Contexts Clarify Ambiguous Expressions</h3>
-                    <p class="text-gray-600">Authors: Heejeong Nam*, Jinwoo Ahn*, <strong>Keummin Ka</strong>, Jiwan Chung, Youngjae Yu</p>
-                    <p><a href="https://arxiv.org/abs/2411.14137" target="_blank" class="text-blue-500 hover:underline">arXiv:2411.14137</a> Accepted to ICCV 2025</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold">An Analysis of the Value Bias of Large Language Models based on the PERMA Theory</h3>
-                    <p class="text-gray-600">Authors: Chaewon Kim, <strong>Keummin Ka</strong>, Jinhong Jeong, Seungbeen Lee, Youngjae Yu</p>
-                    <p><a href="https://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE12416256" target="_blank" class="text-blue-500 hover:underline">KAI Proceedings</a> Accepted to The 6th Korea Artificial Intelligence Conference</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold">Investigating Counterfactual Unfairness in LLMs towards Identities through Humor</h3>
-                    <p class="text-gray-600">Authors: Shubin Kim*, Yejin Son, Junyeong Park, <strong>Keummin Ka</strong>, Seungbeen Lee, Jaeyoung Lee, Hyeju Jang, Alice Oh, Youngjae Yu</p>
-                    <p><a href="https://arxiv.org/abs/2604.18729" target="_blank" class="text-blue-500 hover:underline">arXiv:2604.18729</a> Accepted to ACL 2026</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold">Beyond What Is Shown: A Benchmark for Non-Explicit Causal Reasoning in Infographics</h3>
-                    <p class="text-gray-600">Authors: <strong>Keummin Ka*</strong>, Junhyeong Park*, Jaehyun Jeon, Youngjae Yu</p>
-                    <p><a href="https://arxiv.org/abs/2508.06220" target="_blank" class="text-blue-500 hover:underline">arXiv:2508.06220</a> Under Review by AAAI 2026</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold">A.X K1 Technical Report</h3>
-                    <p class="text-gray-600">Authors: SKTelecom...<strong>Keummin Ka</strong>...</p>
-                    <p><a href="https://arxiv.org/abs/2601.09200" target="_blank" class="text-blue-500 hover:underline">arXiv:2601.09200</a></p>
-                </div>
-            </div>
-        </section>
+                <!-- Desktop Navigation Menu (Tab Switcher) -->
+                <nav class="hidden lg:block bg-white rounded-2xl p-3 border border-slate-200/80 shadow-sm space-y-1">
+                    <button onclick="switchTab('about')" class="nav-tab w-full flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-xl text-left transition" data-target="about">
+                        <i class="fa-regular fa-user w-5 text-center"></i>
+                        <span>About Me</span>
+                    </button>
+                    <button onclick="switchTab('publications')" class="nav-tab w-full flex items-center justify-between px-4 py-3 text-sm font-semibold rounded-xl text-left transition" data-target="publications">
+                        <span class="flex items-center gap-3">
+                            <i class="fa-solid fa-book-bookmark w-5 text-center"></i>
+                            <span>Publications</span>
+                        </span>
+                        <span class="text-xs bg-blue-100 text-blue-700 font-bold px-2 py-0.5 rounded-full">7</span>
+                    </button>
+                    <button onclick="switchTab('experience')" class="nav-tab w-full flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-xl text-left transition" data-target="experience">
+                        <i class="fa-solid fa-briefcase w-5 text-center"></i>
+                        <span>Experience & Labs</span>
+                    </button>
+                    <button onclick="switchTab('education')" class="nav-tab w-full flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-xl text-left transition" data-target="education">
+                        <i class="fa-solid fa-graduation-cap w-5 text-center"></i>
+                        <span>Education</span>
+                    </button>
+                    <button onclick="switchTab('skills')" class="nav-tab w-full flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-xl text-left transition" data-target="skills">
+                        <i class="fa-solid fa-code w-5 text-center"></i>
+                        <span>Skills & Tools</span>
+                    </button>
+                    <button onclick="switchTab('contact')" class="nav-tab w-full flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-xl text-left transition" data-target="contact">
+                        <i class="fa-regular fa-paper-plane w-5 text-center"></i>
+                        <span>Contact</span>
+                    </button>
+                </nav>
 
-        <!-- Experience Section -->
-        <section id="experience" class="bg-white p-8 rounded-lg shadow-md mb-8 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-blue-600 mb-4">Work Experience & Internships</h2>
-            <div class="space-y-6">
-                <div>
-                    <h3 class="text-xl font-semibold">Work Experience</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-600">
-                        <li><strong>LLM Tutor Development Researcher at Lingora Tutoring</strong> (2024.02-2024.06)
-                            <ul class="list-circle list-inside ml-4 text-gray-500">
-                                <li>Participation in Building a Customized Korean LLM Tutor for Lingora Tutoring</li>
-                            </ul>
-                        </li>
-                        <li><strong>2024 Samsung AI Expert course TA</strong> (2024.06.24-2024.06.28)
-                            <ul class="list-circle list-inside ml-4 text-gray-500">
-                                <li>Conducted supplementary lessons on NLP and practiced code.</li>
-                            </ul>
-                        </li>
-                        <li><strong>2024 SK ML Engineer course TA</strong> (2024.07.08-2024.07.12, 2024.07.29-2024.08.02)
-                            <ul class="list-circle list-inside ml-4 text-gray-500">
-                                <li>Conducted supplementary lessons on NLP and practiced code.</li>
-                            </ul>
-                        </li>
-                        <li><strong>SKTelecom Internship</strong> (2025.10.20-2025.12.31)
-                            <ul class="list-circle list-inside ml-4 text-gray-500">
-                                <li>Proprietary AI Foundation Model Internship in SKT.</li>
-                                <li>Model Benchmark and Data Processing.</li>
-                            </ul>
-                        </li>
-                    </ul>
+                <!-- Mobile Navigation Bar (Horizontal Scrollable Tabs) -->
+                <div class="lg:hidden flex overflow-x-auto gap-2 pb-1 no-scrollbar">
+                    <button onclick="switchTab('about')" class="mobile-tab whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-full border border-slate-200 bg-white" data-target="about">About</button>
+                    <button onclick="switchTab('publications')" class="mobile-tab whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-full border border-slate-200 bg-white" data-target="publications">Publications (7)</button>
+                    <button onclick="switchTab('experience')" class="mobile-tab whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-full border border-slate-200 bg-white" data-target="experience">Experience</button>
+                    <button onclick="switchTab('education')" class="mobile-tab whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-full border border-slate-200 bg-white" data-target="education">Education</button>
+                    <button onclick="switchTab('skills')" class="mobile-tab whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-full border border-slate-200 bg-white" data-target="skills">Skills</button>
+                    <button onclick="switchTab('contact')" class="mobile-tab whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-full border border-slate-200 bg-white" data-target="contact">Contact</button>
                 </div>
-                <div>
-                    <h3 class="text-xl font-semibold">Internships</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-600">
-                        <li><strong>Corelab Internship</strong> (Jan '22 – Jul '22)
-                            <ul class="list-circle list-inside ml-4 text-gray-500">
-                                <li>Compiler Research Lab., Prof. Han-Jun Kim, YONSEI, Korea</li>
-                                <li>Studied C programming.</li>
-                            </ul>
-                        </li>
-                        <li><strong>CSE – URP</strong> (Jul '23 - Aug '23)
-                            <ul class="list-circle list-inside ml-4 text-gray-500">
-                                <li>Machine Intelligence and Data Science (MIDaS) Lab., Prof. Won-Yong Shin, Yonsei University, Korea</li>
-                                <li>Studied the basics of Generative Models.</li>
-                            </ul>
-                        </li>
-                        <li><strong>DLIntelligence Lab</strong> (Sep '23 – Aug ‘24)
-                            <ul class="list-circle list-inside ml-4 text-gray-500">
-                                <li>Data & Language Intelligence Lab., Prof. Jin-Yeong Yeo, YONSEI, Korea</li>
-                                <li>Studied Natural Language Processing.</li>
-                            </ul>
-                        </li>
-                    </ul>
+            </aside>
+
+            <!-- RIGHT COLUMN: Wide Content Container -->
+            <section class="lg:col-span-8 space-y-6 min-h-[580px]">
+
+                <!-- 1. ABOUT ME SECTION -->
+                <div id="section-about" class="tab-content bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
+                    <div class="border-b border-slate-100 pb-4 mb-6">
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
+                            <span class="w-2.5 h-6 bg-blue-600 rounded-full inline-block"></span>
+                            About Me
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-1">연구 배경 및 관심 분야 소개</p>
+                    </div>
+
+                    <div class="space-y-4 text-slate-700 leading-relaxed text-sm sm:text-base break-keep">
+                        <p>
+                            안녕하세요! 연세대학교 인공지능학과에서 석사 학위를 취득(2026.08 졸업)한 <strong>가금민(Keummin Ka)</strong>입니다.
+                        </p>
+                        <p>
+                            인공지능 기술이 복잡하고 모호한 인간의 언어와 시각 정보를 명확하게 이해하고, 유용한 가치를 창출할 수 있도록 연구하고 있습니다. 주요 관심 분야는 다음과 같습니다:
+                        </p>
+                    </div>
+
+                    <!-- Research Focus Badges Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-6">
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition">
+                            <div class="flex items-center gap-3 mb-1.5">
+                                <span class="p-2 bg-blue-100 text-blue-600 rounded-lg text-sm"><i class="fa-solid fa-comments"></i></span>
+                                <h3 class="font-semibold text-slate-900 text-sm">Natural Language Processing</h3>
+                            </div>
+                            <p class="text-xs text-slate-500 leading-normal">Large Language Models (LLMs), 인과 추론, 편향 및 가치관 분석</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition">
+                            <div class="flex items-center gap-3 mb-1.5">
+                                <span class="p-2 bg-indigo-100 text-indigo-600 rounded-lg text-sm"><i class="fa-solid fa-eye"></i></span>
+                                <h3 class="font-semibold text-slate-900 text-sm">Vision-Language & Multimodal</h3>
+                            </div>
+                            <p class="text-xs text-slate-500 leading-normal">인포그래픽 인과 추론, 시각적 맥락 기반 모호성 해소(VAGUE)</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition">
+                            <div class="flex items-center gap-3 mb-1.5">
+                                <span class="p-2 bg-emerald-100 text-emerald-600 rounded-lg text-sm"><i class="fa-solid fa-chart-line"></i></span>
+                                <h3 class="font-semibold text-slate-900 text-sm">Benchmark & Evaluation</h3>
+                            </div>
+                            <p class="text-xs text-slate-500 leading-normal">멀티모달 벤치마크 데이터셋 구축 및 다각화된 모델 평가 파이프라인</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition">
+                            <div class="flex items-center gap-3 mb-1.5">
+                                <span class="p-2 bg-amber-100 text-amber-600 rounded-lg text-sm"><i class="fa-solid fa-server"></i></span>
+                                <h3 class="font-semibold text-slate-900 text-sm">Data & Model Engineering</h3>
+                            </div>
+                            <p class="text-xs text-slate-500 leading-normal">대규모 데이터 처리 파이프라인, 파운데이션 모델 데이터셋 정제 및 검증</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="bg-white p-8 rounded-lg shadow-md mb-8 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-blue-600 mb-4">Skills</h2>
-            <ul class="space-y-2 text-gray-600">
-                <li><strong>Languages:</strong> English (Intermediate), Korean (Native)</li>
-                <li><strong>Tech. Stack:</strong> Python, C</li>
-            </ul>
-        </section>
+                <!-- 2. PUBLICATIONS SECTION -->
+                <div id="section-publications" class="tab-content hidden bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
+                    <div class="border-b border-slate-100 pb-4 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div>
+                            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
+                                <span class="w-2.5 h-6 bg-blue-600 rounded-full inline-block"></span>
+                                Publications
+                            </h2>
+                            <p class="text-xs sm:text-sm text-slate-500 mt-1">학술 논문 및 테크니컬 리포트 (총 7편)</p>
+                        </div>
+                        <!-- Filter Tabs -->
+                        <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl text-xs font-medium self-start sm:self-auto">
+                            <button onclick="filterPubs('all')" class="pub-filter active px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs">전체</button>
+                            <button onclick="filterPubs('accepted')" class="pub-filter px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900">Accepted</button>
+                        </div>
+                    </div>
 
-        <!-- Contact Section -->
-        <section id="contact" class="bg-white p-8 rounded-lg shadow-md mb-8 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-blue-600 mb-4">Contact</h2>
-            <p class="text-gray-600">Email: kummin0429@yonsei.ac.kr</p>
-            <p class="text-gray-600">Phone: +82) 010-6250-2726</p>
-        </section>
+                    <!-- Publications List (Strict Order) -->
+                    <div class="space-y-4" id="pub-list">
+                        
+                        <!-- 1. SKT Technical Report -->
+                        <article class="pub-card p-5 rounded-xl border border-slate-200/90 hover:border-blue-300 hover:shadow-sm transition bg-white" data-type="preprint">
+                            <div class="flex items-start justify-between gap-3 flex-wrap">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">
+                                    <i class="fa-regular fa-file-lines text-slate-500"></i> Technical Report
+                                </span>
+                                <a href="https://arxiv.org/abs/2601.09200" target="_blank" class="text-xs text-blue-600 hover:underline flex items-center gap-1 font-medium">
+                                    arXiv:2601.09200 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 mt-2 hover:text-blue-600 transition">
+                                A.X K1 Technical Report
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                                SKTelecom ... <span class="font-semibold text-slate-900 bg-blue-50 px-1 py-0.5 rounded">Keummin Ka</span> ...
+                            </p>
+                        </article>
 
+                        <!-- 2. InfoCausalQA (Accepted) -->
+                        <article class="pub-card p-5 rounded-xl border border-emerald-200/90 bg-emerald-50/20 hover:border-emerald-400 hover:shadow-sm transition" data-type="accepted">
+                            <div class="flex items-start justify-between gap-3 flex-wrap">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                                    <i class="fa-solid fa-circle-check text-emerald-600"></i> Accepted
+                                </span>
+                                <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12929485" target="_blank" class="text-xs text-blue-600 hover:underline flex items-center gap-1 font-medium">
+                                    DBpia Link <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 mt-2 hover:text-blue-600 transition">
+                                InfoCausalQA: A Benchmark for Non-explicit Causal Reasoning in Infographics
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                                <span class="font-semibold text-slate-900 bg-blue-50 px-1 py-0.5 rounded">Keummin Ka*</span>, Junhyeong Park*, Jaehyun Jeon, Youngjae Yu
+                            </p>
+                            <p class="text-xs text-slate-500 mt-1.5">인포그래픽 내 비명시적 인과 관계를 추론하기 위한 멀티모달 벤치마크 연구</p>
+                        </article>
+
+                        <!-- 3. Investigating Counterfactual Unfairness (Accepted ACL 2026) -->
+                        <article class="pub-card p-5 rounded-xl border border-emerald-200/90 bg-emerald-50/20 hover:border-emerald-400 hover:shadow-sm transition" data-type="accepted">
+                            <div class="flex items-start justify-between gap-3 flex-wrap">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                                    <i class="fa-solid fa-circle-check text-emerald-600"></i> Accepted to ACL 2026
+                                </span>
+                                <a href="https://arxiv.org/abs/2604.18729" target="_blank" class="text-xs text-blue-600 hover:underline flex items-center gap-1 font-medium">
+                                    arXiv:2604.18729 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 mt-2 hover:text-blue-600 transition">
+                                Investigating Counterfactual Unfairness in LLMs towards Identities through Humor
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                                Shubin Kim*, Yejin Son, Junyeong Park, <span class="font-semibold text-slate-900 bg-blue-50 px-1 py-0.5 rounded">Keummin Ka</span>, Seungbeen Lee, Jaeyoung Lee, Hyeju Jang, Alice Oh, Youngjae Yu
+                            </p>
+                        </article>
+
+                        <!-- 4. PERMA (Accepted KAI) -->
+                        <article class="pub-card p-5 rounded-xl border border-emerald-200/90 bg-emerald-50/20 hover:border-emerald-400 hover:shadow-sm transition" data-type="accepted">
+                            <div class="flex items-start justify-between gap-3 flex-wrap">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                                    <i class="fa-solid fa-circle-check text-emerald-600"></i> Accepted (The 6th KAI Conference)
+                                </span>
+                                <a href="https://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE12416256" target="_blank" class="text-xs text-blue-600 hover:underline flex items-center gap-1 font-medium">
+                                    KAI Proceedings <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 mt-2 hover:text-blue-600 transition">
+                                An Analysis of the Value Bias of Large Language Models based on the PERMA Theory
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                                Chaewon Kim, <span class="font-semibold text-slate-900 bg-blue-50 px-1 py-0.5 rounded">Keummin Ka</span>, Jinhong Jeong, Seungbeen Lee, Youngjae Yu
+                            </p>
+                        </article>
+
+                        <!-- 5. VAGUE (Accepted ICCV 2025) -->
+                        <article class="pub-card p-5 rounded-xl border border-emerald-200/90 bg-emerald-50/20 hover:border-emerald-400 hover:shadow-sm transition" data-type="accepted">
+                            <div class="flex items-start justify-between gap-3 flex-wrap">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                                    <i class="fa-solid fa-circle-check text-emerald-600"></i> Accepted to ICCV 2025
+                                </span>
+                                <a href="https://arxiv.org/abs/2411.14137" target="_blank" class="text-xs text-blue-600 hover:underline flex items-center gap-1 font-medium">
+                                    arXiv:2411.14137 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 mt-2 hover:text-blue-600 transition">
+                                VAGUE: Visual Contexts Clarify Ambiguous Expressions
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                                Heejeong Nam*, Jinwoo Ahn*, <span class="font-semibold text-slate-900 bg-blue-50 px-1 py-0.5 rounded">Keummin Ka</span>, Jiwan Chung, Youngjae Yu
+                            </p>
+                        </article>
+
+                        <!-- 6. Connecting the Dots (Preprint) -->
+                        <article class="pub-card p-5 rounded-xl border border-slate-200/90 hover:border-blue-300 hover:shadow-sm transition bg-white" data-type="preprint">
+                            <div class="flex items-start justify-between gap-3 flex-wrap">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">
+                                    Preprint
+                                </span>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 mt-2 hover:text-blue-600 transition">
+                                Connecting the Dots from Data: LLM-driven Tree-search Career Cartographies as Your AI Career Explorer
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                                Seungbeen Lee, <span class="font-semibold text-slate-900 bg-blue-50 px-1 py-0.5 rounded">Keummin Ka</span>, Jinhong Jeong, Chaewon Kim, Seungju Han, Youngjae Yu
+                            </p>
+                        </article>
+
+                        <!-- 7. Ever-Evolving Memory -->
+                        <article class="pub-card p-5 rounded-xl border border-slate-200/90 hover:border-blue-300 hover:shadow-sm transition bg-white" data-type="preprint">
+                            <div class="flex items-start justify-between gap-3 flex-wrap">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">
+                                    Preprint
+                                </span>
+                                <a href="https://arxiv.org/abs/2403.04787" target="_blank" class="text-xs text-blue-600 hover:underline flex items-center gap-1 font-medium">
+                                    arXiv:2403.04787 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 mt-2 hover:text-blue-600 transition">
+                                Ever-Evolving Memory by Blending and Refining the Past
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                                Seohyun Kim, <span class="font-semibold text-slate-900 bg-blue-50 px-1 py-0.5 rounded">Keummin Ka</span>, Yohan Jo, Seung-won Hwang, Dongha Lee, Jinyoung Yeo
+                            </p>
+                        </article>
+
+                    </div>
+                </div>
+
+                <!-- 3. EXPERIENCE SECTION -->
+                <div id="section-experience" class="tab-content hidden bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-8">
+                    <div>
+                        <div class="border-b border-slate-100 pb-4 mb-6">
+                            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
+                                <span class="w-2.5 h-6 bg-blue-600 rounded-full inline-block"></span>
+                                Research & Work Experience
+                            </h2>
+                            <p class="text-xs sm:text-sm text-slate-500 mt-1">연구실 인턴십, 산업체 실무 및 교육 조교 활동</p>
+                        </div>
+
+                        <!-- Subsection A: Research Lab Internships (Wide Grid Layout) -->
+                        <div class="mb-8">
+                            <h3 class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-flask-vial text-blue-600"></i>
+                                Research Lab Internships (연구실 인턴십)
+                            </h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- DLIntelligence Lab -->
+                                <div class="p-5 rounded-xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 hover:border-blue-300 hover:shadow-xs transition md:col-span-2">
+                                    <div class="flex items-start justify-between gap-2 flex-wrap mb-2">
+                                        <h4 class="font-bold text-slate-900 text-base">DLIntelligence Lab (데이터 & 언어 지능 연구실)</h4>
+                                        <span class="text-xs font-semibold px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200">2023.09 – 2024.08</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500 mb-2">
+                                        <i class="fa-solid fa-user-tie mr-1"></i>지도교수: 여진영 교수님 (Yonsei University)
+                                    </p>
+                                    <p class="text-xs sm:text-sm text-slate-600 leading-normal">
+                                        자연어 처리(NLP) 및 생성 모델 연구 수행, 대규모 텍스트 데이터셋 분석 및 언어 모델 메모리 증강 기법 연구에 참여.
+                                    </p>
+                                </div>
+
+                                <!-- CSE - URP -->
+                                <div class="p-5 rounded-xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 hover:border-blue-300 hover:shadow-xs transition">
+                                    <div class="flex items-start justify-between gap-2 flex-wrap mb-2">
+                                        <h4 class="font-bold text-slate-900 text-sm sm:text-base">CSE – URP (MIDaS Lab)</h4>
+                                        <span class="text-xs font-medium px-2 py-0.5 bg-slate-100 text-slate-600 rounded">2023.07 – 2023.08</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500 mb-2">
+                                        <i class="fa-solid fa-user-tie mr-1"></i>지도교수: 신원용 교수님 (Yonsei Univ.)
+                                    </p>
+                                    <p class="text-xs sm:text-sm text-slate-600 leading-normal">
+                                        기계 지능 및 데이터 사이언스 연구실에서 생성 모델(Generative Models)의 기초 이론 및 방법론 스터디 수행.
+                                    </p>
+                                </div>
+
+                                <!-- Corelab -->
+                                <div class="p-5 rounded-xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 hover:border-blue-300 hover:shadow-xs transition">
+                                    <div class="flex items-start justify-between gap-2 flex-wrap mb-2">
+                                        <h4 class="font-bold text-slate-900 text-sm sm:text-base">Corelab (컴파일러 연구실)</h4>
+                                        <span class="text-xs font-medium px-2 py-0.5 bg-slate-100 text-slate-600 rounded">2022.01 – 2022.07</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500 mb-2">
+                                        <i class="fa-solid fa-user-tie mr-1"></i>지도교수: 김한준 교수님 (Yonsei Univ.)
+                                    </p>
+                                    <p class="text-xs sm:text-sm text-slate-600 leading-normal">
+                                        시스템 및 컴파일러 연구실 인턴십을 통해 C 프로그래밍 및 저수준 아키텍처 원리 심화 학습.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subsection B: Industry & Teaching Experience -->
+                        <div>
+                            <h3 class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-building text-slate-700"></i>
+                                Industry & Teaching Experience
+                            </h3>
+                            <div class="space-y-3.5">
+                                <!-- SKT -->
+                                <div class="p-4 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition">
+                                    <div class="flex items-start justify-between gap-2 flex-wrap mb-1">
+                                        <h4 class="font-bold text-slate-900 text-sm sm:text-base">SKTelecom 인턴십 (Foundation Model)</h4>
+                                        <span class="text-xs font-medium text-slate-500">2025.10.20 – 2025.12.31</span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-slate-600">
+                                        SKT 독자 파운데이션 AI 모델 인턴십: 모델 벤치마크 평가, 대규모 데이터셋 생성 및 정제·검증 파이프라인 수행.
+                                    </p>
+                                </div>
+
+                                <!-- Lingora -->
+                                <div class="p-4 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition">
+                                    <div class="flex items-start justify-between gap-2 flex-wrap mb-1">
+                                        <h4 class="font-bold text-slate-900 text-sm sm:text-base">LLM Tutor 개발 연구원 (Lingora Tutoring)</h4>
+                                        <span class="text-xs font-medium text-slate-500">2024.02 – 2024.06</span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-slate-600">
+                                        맞춤형 한국어 LLM 튜터 모델 구축 및 데이터 검증 연구 참여.
+                                    </p>
+                                </div>
+
+                                <!-- TA -->
+                                <div class="p-4 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition">
+                                    <div class="flex items-start justify-between gap-2 flex-wrap mb-1">
+                                        <h4 class="font-bold text-slate-900 text-sm sm:text-base">AI 및 머신러닝 과정 교육 조교 (TA)</h4>
+                                        <span class="text-xs font-medium text-slate-500">2024년 여름</span>
+                                    </div>
+                                    <ul class="text-xs sm:text-sm text-slate-600 list-disc list-inside space-y-1">
+                                        <li><strong>SK ML Engineer 과정 TA</strong> (2024.07.08-07.12, 07.29-08.02): NLP 실습 지도 및 코드 멘토링</li>
+                                        <li><strong>Samsung AI Expert 과정 TA</strong> (2024.06.24-06.28): NLP 핵심 개념 및 실습 환경 지원</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 4. EDUCATION SECTION -->
+                <div id="section-education" class="tab-content hidden bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
+                    <div class="border-b border-slate-100 pb-4 mb-6">
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
+                            <span class="w-2.5 h-6 bg-blue-600 rounded-full inline-block"></span>
+                            Education
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-1">학력 사항</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Master's Degree (Graduated Aug 2026) -->
+                        <div class="relative pl-6 sm:pl-8 border-l-2 border-blue-500">
+                            <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-blue-600 ring-4 ring-blue-100"></span>
+                            <div class="flex items-start justify-between flex-wrap gap-2">
+                                <div>
+                                    <h3 class="text-base sm:text-lg font-bold text-slate-900">연세대학교 (Yonsei University)</h3>
+                                    <p class="text-sm font-semibold text-blue-600 mt-0.5">인공지능학과 석사 (M.S. in Artificial Intelligence)</p>
+                                </div>
+                                <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-lg border border-blue-200">
+                                    2024.09 – 2026.08 (졸업)
+                                </span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-500 mt-2">
+                                서울특별시 신촌캠퍼스 · Vision-Language 모델, 인과 추론 및 벤치마크 평가 연구
+                            </p>
+                        </div>
+
+                        <!-- Bachelor's Degree -->
+                        <div class="relative pl-6 sm:pl-8 border-l-2 border-slate-200">
+                            <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-slate-300 ring-4 ring-slate-100"></span>
+                            <div class="flex items-start justify-between flex-wrap gap-2">
+                                <div>
+                                    <h3 class="text-base sm:text-lg font-bold text-slate-900">연세대학교 (Yonsei University)</h3>
+                                    <p class="text-sm font-semibold text-slate-700 mt-0.5">전기전자공학부 학사 (B.S. in Electrical and Electronic Engineering)</p>
+                                </div>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-lg">
+                                    2020.03 – 2024.08 (졸업)
+                                </span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-500 mt-2">
+                                서울특별시 신촌캠퍼스 · 컴퓨터 구조, 소프트웨어 기초 및 공학 수학 이수
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. SKILLS SECTION -->
+                <div id="section-skills" class="tab-content hidden bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
+                    <div class="border-b border-slate-100 pb-4 mb-6">
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
+                            <span class="w-2.5 h-6 bg-blue-600 rounded-full inline-block"></span>
+                            Skills & Capabilities
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-1">연구 및 실무에 활용 가능한 기술 스택</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Programming Languages -->
+                        <div class="p-5 rounded-xl border border-slate-100 bg-slate-50/70 space-y-4">
+                            <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-code text-blue-500"></i> Programming Languages
+                            </h3>
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span>Python</span>
+                                    <span class="text-slate-500">Proficient / Research & Data</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                                </div>
+                                <p class="text-[11px] text-slate-500 mt-1">PyTorch 기반 모델 실험, 데이터 전처리 및 분석 스크립트 작성</p>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span>C / Systems</span>
+                                    <span class="text-slate-500">Intermediate</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-2">
+                                    <div class="bg-slate-500 h-2 rounded-full" style="width: 55%"></div>
+                                </div>
+                                <p class="text-[11px] text-slate-500 mt-1">자료구조, 알고리즘 및 시스템 프로그래밍 기초 이해</p>
+                            </div>
+                        </div>
+
+                        <!-- Frameworks & AI Tools -->
+                        <div class="p-5 rounded-xl border border-slate-100 bg-slate-50/70 space-y-4">
+                            <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-microchip text-indigo-500"></i> Frameworks & Tools
+                            </h3>
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span>PyTorch & Transformers</span>
+                                    <span class="text-slate-500">Intermediate-Advanced</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-2">
+                                    <div class="bg-indigo-600 h-2 rounded-full" style="width: 75%"></div>
+                                </div>
+                                <p class="text-[11px] text-slate-500 mt-1">Hugging Face 생태계, VLM/LLM 파인튜닝 및 벤치마크 평가</p>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span>Data Engineering (Polars / Pandas)</span>
+                                    <span class="text-slate-500">Practical</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-2">
+                                    <div class="bg-emerald-600 h-2 rounded-full" style="width: 70%"></div>
+                                </div>
+                                <p class="text-[11px] text-slate-500 mt-1">대용량 텍스트/멀티모달 데이터 정제 및 파이프라인 관리</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Languages -->
+                    <div class="p-4 rounded-xl border border-slate-100 bg-white flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
+                        <span class="font-semibold text-slate-800">
+                            <i class="fa-solid fa-earth-americas text-blue-500 mr-1.5"></i> Language Proficiency
+                        </span>
+                        <div class="flex items-center gap-3 text-slate-600">
+                            <span class="px-2.5 py-1 bg-slate-100 rounded-md"><strong>한국어:</strong> 원어민 (Native)</span>
+                            <span class="px-2.5 py-1 bg-slate-100 rounded-md"><strong>English:</strong> Intermediate (학술 논문 작성 및 커뮤니케이션 가능)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. CONTACT SECTION -->
+                <div id="section-contact" class="tab-content hidden bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
+                    <div class="border-b border-slate-100 pb-4 mb-6">
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
+                            <span class="w-2.5 h-6 bg-blue-600 rounded-full inline-block"></span>
+                            Contact
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-1">협업 문의 및 연락처</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-5 rounded-xl border border-slate-200 bg-slate-50/50 flex flex-col justify-between">
+                            <div>
+                                <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-3">
+                                    <i class="fa-regular fa-envelope text-lg"></i>
+                                </div>
+                                <h3 class="font-semibold text-slate-900 text-sm">Official Email</h3>
+                                <p class="text-xs sm:text-sm text-slate-600 mt-1">kummin0429@yonsei.ac.kr</p>
+                            </div>
+                            <div class="mt-4">
+                                <a href="mailto:kummin0429@yonsei.ac.kr" class="text-xs font-semibold text-blue-600 hover:underline">
+                                    메일 보내기 &rarr;
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="p-5 rounded-xl border border-slate-200 bg-slate-50/50 flex flex-col justify-between">
+                            <div>
+                                <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center mb-3">
+                                    <i class="fa-solid fa-phone text-lg"></i>
+                                </div>
+                                <h3 class="font-semibold text-slate-900 text-sm">Mobile Phone</h3>
+                                <p class="text-xs sm:text-sm text-slate-600 mt-1">+82) 010-6250-2726</p>
+                            </div>
+                            <div class="mt-4">
+                                <a href="tel:+8201062502726" class="text-xs font-semibold text-emerald-600 hover:underline">
+                                    전화 연결 &rarr;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
     </main>
 
-    <footer class="bg-gray-800 text-white text-center p-4">
-        <p>&copy; 2024 Keummin Ka. All Rights Reserved.</p>
+    <!-- Footer -->
+    <footer class="w-full border-t border-slate-200/80 bg-white py-6 text-center text-xs text-slate-500 mt-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>&copy; 2026 Keummin Ka. All Rights Reserved.</p>
+        </div>
     </footer>
 
+    <!-- Toast Notification for Copy -->
+    <div id="toast" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-slate-900 text-white text-xs px-4 py-2.5 rounded-xl shadow-lg flex items-center gap-2 z-50">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span>이메일 주소가 클립보드에 복사되었습니다!</span>
+    </div>
+
+    <!-- Script: Tab Switching, Publications Filter, Clipboard Copy -->
+    <script>
+        // Tab switching logic
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            
+            // Show target section
+            const targetSection = document.getElementById(`section-${tabId}`);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+
+            // Update Desktop Nav styles
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                if (tab.getAttribute('data-target') === tabId) {
+                    tab.classList.add('bg-blue-50', 'text-blue-600', 'font-bold');
+                    tab.classList.remove('text-slate-600', 'hover:bg-slate-50');
+                } else {
+                    tab.classList.remove('bg-blue-50', 'text-blue-600', 'font-bold');
+                    tab.classList.add('text-slate-600', 'hover:bg-slate-50');
+                }
+            });
+
+            // Update Mobile Nav styles
+            document.querySelectorAll('.mobile-tab').forEach(tab => {
+                if (tab.getAttribute('data-target') === tabId) {
+                    tab.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+                    tab.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+                } else {
+                    tab.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+                    tab.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+                }
+            });
+
+            // Scroll slightly up on mobile
+            if (window.innerWidth < 1024) {
+                window.scrollTo({ top: 120, behavior: 'smooth' });
+            }
+        }
+
+        // Publications Filter (All vs Accepted)
+        function filterPubs(type) {
+            const cards = document.querySelectorAll('.pub-card');
+            cards.forEach(card => {
+                if (type === 'all') {
+                    card.classList.remove('hidden');
+                } else if (type === 'accepted') {
+                    if (card.getAttribute('data-type') === 'accepted') {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                }
+            });
+
+            // Update button styles
+            document.querySelectorAll('.pub-filter').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-slate-900', 'shadow-xs');
+                btn.classList.add('text-slate-600');
+            });
+            event.target.classList.add('bg-white', 'text-slate-900', 'shadow-xs');
+            event.target.classList.remove('text-slate-600');
+        }
+
+        // Copy Email function with toast
+        function copyEmail() {
+            navigator.clipboard.writeText('kummin0429@yonsei.ac.kr').then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                }, 2200);
+            });
+        }
+
+        // Initialize default tab (About)
+        document.addEventListener('DOMContentLoaded', () => {
+            switchTab('about');
+        });
+    </script>
 </body>
 </html>
